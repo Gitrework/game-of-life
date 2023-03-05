@@ -1,5 +1,6 @@
 pipeline{
       agent { label 'SONAR-NODE' }
+      tool { jdk 'JAVA-8-JDK' }
       stages {
             stage('vcs') {
                   steps{
@@ -14,7 +15,7 @@ pipeline{
             }
             stage('buld') {
                   steps{
-                        archiveArtifacts artifacts: '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
+                        archiveArtifacts artifacts:  '**/*.txt',
                                  onlyIfSuccessful: true
                         junit testResults: '**/surefire-reports/TEST-*.xml'
                   }
