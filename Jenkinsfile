@@ -1,5 +1,8 @@
 pipeline{
       agent { label 'SONAR-NODE' }
+      tool {
+            jdk 'JAVA-8-JDK'
+      }       
       stages {
             stage('vcs') {
                   steps{
@@ -8,7 +11,6 @@ pipeline{
                   }
             } 
             stage('package') {
-                  tool { jdk 'JAVA-8-JDK' }
                   steps{
                         sh 'mvn package'
                   }                  
